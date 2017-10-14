@@ -1,4 +1,10 @@
 /node_modules/
+bower_components/
+
 npm-debug.log
 
 package-lock.json
+
+client/bundle.js
+
+.DS_Store
