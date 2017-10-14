@@ -21,8 +21,8 @@ const store = createStore(
 store.dispatch(changeExample('Learn about actions'));
 
 ReactDOM.render(
-	<Provider store={store}>
-    	<ConnectedRouter history={history}>
-		  <App/>
-    	</ConnectedRouter>
-	</Provider>, document.getElementById('app'));
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App/>
+    </ConnectedRouter>
+  </Provider>, document.getElementById('app'));

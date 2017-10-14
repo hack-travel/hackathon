@@ -1,9 +1,7 @@
-const example = (state = {
-  text: 'example'
-}, action) => {
+const example = (state = 'example', action) => {
   switch (action.type) {
     case 'CHANGE_EXAMPLE':
-      return { text: action.text };
+      return action.text;
     default:
       return state;
   }
