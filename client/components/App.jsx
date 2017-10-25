@@ -25,18 +25,18 @@ class App extends React.Component {
     this.login = this.login.bind(this);
   }
 
-  // componentWillMount() {
-  //   let unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({
-  //         user,
-  //         userId: user.uid,
-  //         isLoggedIn: true,
-  //       });
-  //     }
-  //   });
-  //   setTimeout(() => unsubscribe(), 5000);
-  // }
+  componentWillMount() {
+    let unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          user,
+          userId: user.uid,
+          isLoggedIn: true,
+        });
+      }
+    });
+    setTimeout(() => unsubscribe(), 5000);
+  }
 
   login(user, fbInfo) {
     this.setState({
