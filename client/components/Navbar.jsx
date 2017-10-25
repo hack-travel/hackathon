@@ -1,38 +1,45 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+
+// React-Redux connect() boilerplate
+// NOTE: you may have to modify the filepath for ActionCreators
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../actions';
-import Home from './Home.jsx';
-import ProfileIndex from './profile/ProfileIndex.jsx';
-import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
-import PrepIndex from './prep/PrepIndex.jsx';
-import Navbar from './Navbar.jsx';
 
 
 
 
-class App extends React.Component {
+class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
 
     };
-    console.log('App: this:', this);
+    
   }
 
   render() {
+
+    var heading = {
+      float: 'left'
+    }
+
+    var rightNav = {
+      marginTop: '22px'
+    }
     return (
-      <div>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/profile" component={ProfileIndex}/>
-          <Route path="/itinerary" component={ItineraryIndex}/>
-          <Route path="/prep" component={PrepIndex}/>
-        </Switch>
+      <div className='navbar'>
+        <h2 style={heading}> Hack Travel </h2>
+        <div style={rightNav}>
+          <ul>
+            <li> <Link to='/profile'> Profile </Link> </li>
+            <li> <Link to='/itinerary'> Itinerary </Link> </li>
+            <li> <Link to='/prep'> Preperation </Link> </li>
+          </ul>
+        </div>
       </div>
-    )
+    );
   }
 }
 
@@ -54,4 +61,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App));
+)(Navbar));
