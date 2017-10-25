@@ -73,7 +73,17 @@ Itinerary.belongsToMany(Tag, {through: 'itineraryAndTag'});
 
 ItineraryAndTag.sync({force: false});
 
+const EventAndTag = sequelize.define('eventAndTag', {
+})
+
+Tag.belongsToMany(Event, {through: 'eventAndTag'});
+Event.belongsToMany(Tag, {through: 'eventAndTag'});
+
+EventAndTag.sync({force: false});
+
+
 const UserAndTag = sequelize.define('userAndTag', {
+  count: Sequelize.INTEGER
 })
 
 User.belongsToMany(Tag, {through: 'userAndTag'});
@@ -91,5 +101,6 @@ module.exports = {
   Itinerary: Itinerary,
   Event: Event,
   ItineraryAndTag: ItineraryAndTag,
-  UserAndTag: UserAndTag
+  UserAndTag: UserAndTag,
+  EventAndTag: EventAndTag
 };
