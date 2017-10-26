@@ -28,7 +28,7 @@ const User = sequelize.define('user', {
   username: Sequelize.STRING,
   password: Sequelize.STRING,
   email: Sequelize.STRING,
-  fbId: Sequelize.INTEGER,
+  fbId: Sequelize.BIGINT,
   sex: Sequelize.STRING,
   age: Sequelize.INTEGER
 });
@@ -73,7 +73,17 @@ Itinerary.belongsToMany(Tag, {through: 'itineraryAndTag'});
 
 ItineraryAndTag.sync({force: false});
 
+const EventAndTag = sequelize.define('eventAndTag', {
+})
+
+Tag.belongsToMany(Event, {through: 'eventAndTag'});
+Event.belongsToMany(Tag, {through: 'eventAndTag'});
+
+EventAndTag.sync({force: false});
+
+
 const UserAndTag = sequelize.define('userAndTag', {
+  count: Sequelize.INTEGER
 })
 
 User.belongsToMany(Tag, {through: 'userAndTag'});
@@ -91,6 +101,7 @@ const Budget = sequelize.define('budget', {
   Souvenirs: Sequelize.INTEGER,
   EmergencyFund: Sequelize.INTEGER
 });
+Budget.sync({force: false});
 
 
 
@@ -102,5 +113,6 @@ module.exports = {
   Event: Event,
   ItineraryAndTag: ItineraryAndTag,
   UserAndTag: UserAndTag,
+  EventAndTag: EventAndTag,
   Budget
 };
