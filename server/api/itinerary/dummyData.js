@@ -5,7 +5,7 @@ const events = [
     location: 'istanbul, turkey',
     dateStart: new Date(2017, 11, 15),
     dateEnd: new Date(2017, 11, 15),
-    pictureURL: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Adalar_5536.jpg'
+    pictureURL: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Adalar_5536.jpg',
     itinerary: 211,
   },
   {
@@ -14,7 +14,7 @@ const events = [
     location: 'istanbul, turkey',
     dateStart: new Date(2017, 11, 16),
     dateEnd: new Date(2017, 11, 16),
-    pictureURL: 'https://media.cntraveler.com/photos/53d9d481dcd5888e145a42dc/master/pass/club-reina-istanbul-nightlife.jpg'
+    pictureURL: 'https://media.cntraveler.com/photos/53d9d481dcd5888e145a42dc/master/pass/club-reina-istanbul-nightlife.jpg',
     itinerary: 211,
   }
 ];
