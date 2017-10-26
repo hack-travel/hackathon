@@ -16,7 +16,7 @@ class Navbar extends React.Component {
     this.state = {
 
     };
-    
+
   }
 
   render() {
@@ -36,6 +36,7 @@ class Navbar extends React.Component {
             <li> <Link to='/profile'> Profile </Link> </li>
             <li> <Link to='/itinerary'> Itinerary </Link> </li>
             <li> <Link to='/prep'> Preperation </Link> </li>
+            <li onClick={this.props.handleSignOut}><Link to="/">Sign Out</Link></li>
           </ul>
         </div>
       </div>
