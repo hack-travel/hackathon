@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../../actions';
+import CreateBudget from './CreateBudget.jsx';
 
 class BudgetHome extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class BudgetHome extends React.Component {
     return (
       <div className='budgetHome'>
         <p>Budget Home</p>
+        <CreateBudget/>
       </div>
     );
   }

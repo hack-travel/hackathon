@@ -7,6 +7,7 @@ import Home from './Home.jsx';
 import ProfileIndex from './profile/ProfileIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import PrepIndex from './prep/PrepIndex.jsx';
+import BudgetHome from './prep/budget/BudgetHome.jsx';
 
 
 
