@@ -94,12 +94,13 @@ UserAndTag.sync({force: false});
 // not too sure how feature three group db will look
 
 const Budget = sequelize.define('budget', {
-  Flight: Sequelize.INTEGER,
-  Hotel: Sequelize.INTEGER,
-  Food: Sequelize.INTEGER,
-  PublicTransport: Sequelize.INTEGER,
-  Souvenirs: Sequelize.INTEGER,
-  EmergencyFund: Sequelize.INTEGER
+  BudgetName: Sequelize.STRING,
+  Flight: Sequelize.DECIMAL(10,2),
+  Hotel: Sequelize.DECIMAL(10,2),
+  Food: Sequelize.DECIMAL(10,2),
+  PublicTransport: Sequelize.DECIMAL(10,2),
+  Souvenirs: Sequelize.DECIMAL(10,2),
+  EmergencyFund: Sequelize.DECIMAL(10,2)
 });
 Budget.sync({force: false});
 
