@@ -23,6 +23,7 @@ const itineraries = [
     "name": "trip to istanbul",
     "dateStart": new Date(2017, 11, 15),
     "dateEnd": new Date(2017, 11, 16),
+    "userId": 12
   },
   {
     "name": 'trip to new york',

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../actions';
 
-import ViewItineraries from './ViewItineraries'
+import ViewItineraries from './ViewItineraries.jsx';
 
 class ItineraryIndex extends React.Component {
   constructor(props) {

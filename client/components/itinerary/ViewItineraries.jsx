@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../actions';
 
-class ViewItinerary extends React.Component {
+class ViewItineraries extends React.Component {
   
   componentDidMount() {
     const myHeaders = new Headers();
@@ -16,16 +16,21 @@ class ViewItinerary extends React.Component {
       headers: myHeaders,
       mode: 'cors'
     }
-    
+    console.log(',ounted')
+
     fetch('/api/itinerary/itineraries', myInit)
-      .then((response) => ActionCreators.changeEvents(response.data))
-)
+      .then(response => {
+        console.log('response.data', response.data);
+        return ActionCreators.changeItineraries(response.data)
+      })
+      .catch(err => console.log('err', err))
   }
 
   render() {
+    const { itineraries } = this.props;
     return (
       <div>
-        <h3> ItineraryIndex </h3> 
+        <h3> FDEWFWEFW </h3>
       </div>
     );
   }
@@ -47,4 +52,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(ActionCreators, dispatch),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ViewItinerary));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ViewItineraries));
