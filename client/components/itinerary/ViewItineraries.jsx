@@ -1,4 +1,5 @@
 import React from 'react';
+import jQuery from 'jQuery';
 
 // React-Redux connect() boilerplate
 // NOTE: you may have to modify the filepath for ActionCreators
@@ -7,30 +8,36 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../actions';
 
+console.log('actionCreators', ActionCreators);
+
 class ViewItineraries extends React.Component {
   
   componentDidMount() {
-    const myHeaders = new Headers();
-    const myInit = {
-      method: 'GET',
-      headers: myHeaders,
-      mode: 'cors'
+    console.log('this.props', this.props);
+    const settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://localhost:8080/api/itinerary/itineraries",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache",
+        "postman-token": "e9b0e95d-3a50-8d68-c37f-47e16455b61a"
+      }
     }
-    console.log(',ounted')
-
-    fetch('/api/itinerary/itineraries', myInit)
-      .then(response => {
-        console.log('response.data', response.data);
-        return ActionCreators.changeItineraries(response.data)
-      })
-      .catch(err => console.log('err', err))
+    
+    jQuery.ajax(settings).done(response => {
+      console.log('response', response);
+      this.props.actions.changeItineraries(response);
+    });
   }
 
   render() {
     const { itineraries } = this.props;
+    console.log('itin', itineraries)
     return (
       <div>
         <h3> FDEWFWEFW </h3>
+        {itineraries && itineraries.length ? itineraries.map(itinerary => <div>{itinerary.name}</div>) : null}
       </div>
     );
   }

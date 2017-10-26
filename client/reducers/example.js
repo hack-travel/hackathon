@@ -1,7 +1,7 @@
 const example = (state = 'example', action) => {
   switch (action.type) {
     case 'CHANGE_EXAMPLE':
-      return action.text;
+      return action.payload;
     default:
       return state;
   }

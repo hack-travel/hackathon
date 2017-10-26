@@ -1,6 +1,8 @@
-export const CHANGE_EVENTS = 'CHANGE_EVENTS';
+const CHANGE_EVENTS = 'CHANGE_EVENTS';
 
-export const changeEvents = events => ({
+const changeEvents = events => ({
   type: CHANGE_EVENTS,
   payload: events,
 });
+
+export default changeEvents;
