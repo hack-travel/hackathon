@@ -59,7 +59,7 @@ const Event = sequelize.define('event', {
   location: Sequelize.STRING,
   dateStart: Sequelize.DATE,
   dateEnd: Sequelize.DATE,
-  pictureURL: Sequelize.STRING
+  pictureUrl: Sequelize.STRING
 });
 
 Event.belongsTo(Itinerary);
