@@ -83,6 +83,16 @@ UserAndTag.sync({force: false});
 
 // not too sure how feature three group db will look
 
+const Budget = sequelize.define('budget', {
+  Flight: Sequelize.INTEGER,
+  Hotel: Sequelize.INTEGER,
+  Food: Sequelize.INTEGER,
+  PublicTransport: Sequelize.INTEGER,
+  Souvenirs: Sequelize.INTEGER,
+  EmergencyFund: Sequelize.INTEGER
+});
+
+
 
 module.exports = {
   sequelize: sequelize,
@@ -91,5 +101,6 @@ module.exports = {
   Itinerary: Itinerary,
   Event: Event,
   ItineraryAndTag: ItineraryAndTag,
-  UserAndTag: UserAndTag
+  UserAndTag: UserAndTag,
+  Budget
 };
