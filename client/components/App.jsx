@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../actions';
 import firebase from 'Firebase'
+import fire from './profile/firebase.jsx';
 import Home from './Home.jsx';
 import ProfileIndex from './profile/ProfileIndex.jsx';
 import Login from './profile/login.jsx';
@@ -23,6 +24,7 @@ class App extends React.Component {
       userId: null,
     };
     this.login = this.login.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
   componentWillMount() {
@@ -46,6 +48,20 @@ class App extends React.Component {
     })
   }
 
+  handleSignOut(e) {
+    e.preventDefault();
+    fire.auth().signOut()
+      .then((firebaseUser) => {
+        this.setState({
+          isLoggedIn: false,
+          usersFacebook: null,
+          userId: null,
+        })
+      })
+      .catch((error) => {
+        cb(error);
+      });
+  }
 
 
   render() {
@@ -58,15 +74,17 @@ class App extends React.Component {
     }
     return (
       <div>
-        <h3> Hack Travel </h3>
         {this.state.isLoggedIn ?
+          <div>
+          <Navbar handleSignOut={this.handleSignOut}/>
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/profile" component={ProfileIndex}/>
             <Route path="/itinerary" component={ItineraryIndex}/>
             <Route path="/prep" component={PrepIndex}/>
             <Route path="/*" component={Home}/>
-          </Switch> :
+          </Switch>
+          </div> :
           <Route path="/*" render={LoginComponent} login="test"/>
         }
       </div>

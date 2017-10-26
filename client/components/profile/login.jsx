@@ -7,7 +7,6 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      test: null,
     };
     this.facebookAuth = this.facebookAuth.bind(this);
   }
