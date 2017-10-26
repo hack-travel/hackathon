@@ -1,17 +1,30 @@
 import React from 'react';
+import axios from 'axios';
 
 class CreateBudget extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      Flight: '',
-      Hotel: '',
-      Food: '',
-      PublicTransport: '',
-      Souvenirs: '',
-      EmergencyFund: ''
+      Flight: 0,
+      Hotel: 0,
+      Food: 0,
+      PublicTransport: 0,
+      Souvenirs: 0,
+      EmergencyFund: 0
     }
     this.handleChange = this.handleChange.bind(this);
+  }
+  handleSubmit (e) {
+    e.preventDefault();
+    let s = this.state;
+    axios.post('/prep/budget', {
+      Flight: s.Flight,
+      Hotel: s.Hotel,
+      Food: s.Food,
+      PublicTransport: s.PublicTransport,
+      Souvenirs: s.Souvenirs,
+      EmergencyFund: s.EmergencyFund
+    })
   }
   handleChange (e) {
     this.setState({
@@ -29,6 +42,7 @@ class CreateBudget extends React.Component {
         Souvenirs:<input value={this.state.Souvenirs} onChange={this.handleChange} data-type='Souvenirs'/><br/>
         EmergencyFund:<input value={this.state.EmergencyFund} onChange={this.handleChange} data-type='EmergencyFund'/><br/>
       </form>
+      <button onClick={this.handleSubmit}>Make Budget Plan</button>
     </div>
   }
 }
