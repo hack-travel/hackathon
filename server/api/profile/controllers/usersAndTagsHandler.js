@@ -6,7 +6,6 @@ const UsersAndTags = db.UserAndTag;
 exports.insertIntoUsersAndTags = (req, res) => {
   // If we have the username/id in session then use that in query to table.
   req.body.tags.forEach((tag) => {
-    console.log('THIS IS THE TAG', tag)
     UsersAndTags.findOrCreate({
       where: {
         userId: req.body.userId,
