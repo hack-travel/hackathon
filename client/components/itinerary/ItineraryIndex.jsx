@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../actions';
 
-
-
+import ViewItineraries from './ViewItineraries.jsx';
 
 class ItineraryIndex extends React.Component {
   constructor(props) {
@@ -16,13 +15,13 @@ class ItineraryIndex extends React.Component {
     this.state = {
 
     };
-    
   }
 
   render() {
     return (
       <div>
         <h3> ItineraryIndex </h3> 
+        <ViewItineraries />
       </div>
     );
   }
