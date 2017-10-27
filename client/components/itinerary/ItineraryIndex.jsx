@@ -15,7 +15,6 @@ class ItineraryIndex extends React.Component {
     this.state = {
 
     };
-    
   }
 
   render() {

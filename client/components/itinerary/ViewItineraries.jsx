@@ -8,36 +8,44 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../actions';
 
-console.log('actionCreators', ActionCreators);
+import updateStateFromDb from './helpers/dbHelpers'
+import findOneEventFromItinerary from './helpers/dataHelpers'
+
+import ItineraryPreview from './ItineraryPreview.jsx';
 
 class ViewItineraries extends React.Component {
-  
   componentDidMount() {
-    console.log('this.props', this.props);
-    const settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "http://localhost:8080/api/itinerary/itineraries",
-      "method": "GET",
-      "headers": {
-        "cache-control": "no-cache",
-        "postman-token": "e9b0e95d-3a50-8d68-c37f-47e16455b61a"
-      }
-    }
-    
-    jQuery.ajax(settings).done(response => {
-      console.log('response', response);
-      this.props.actions.changeItineraries(response);
-    });
+    updateStateFromDb('itineraries', this.props.actions);
+    updateStateFromDb('events', this.props.actions);
   }
 
   render() {
-    const { itineraries } = this.props;
-    console.log('itin', itineraries)
+    const { itineraries, events } = this.props;
+    let itinerariesWithPhotos = null;
+
+    if (itineraries && events) {
+      itinerariesWithPhotos = itineraries.map((itinerary) => {
+        const { pictureUrl } = findOneEventFromItinerary(events, itinerary) || '';
+        console.log('pictureUrl to assign', pictureUrl)
+        const newItinerary = Object.assign({
+          pictureUrl,
+        }, itinerary);
+
+        return newItinerary;
+      });
+    }
+
     return (
       <div>
         <h3> FDEWFWEFW </h3>
-        {itineraries && itineraries.length ? itineraries.map(itinerary => <div>{itinerary.name}</div>) : null}
+        <div className="itinerary-preview-list">
+          {
+            itineraries && itineraries.length ?
+            itinerariesWithPhotos.map(itinerary => <ItineraryPreview itinerary={itinerary} />)
+              :
+              null
+          }
+        </div>
       </div>
     );
   }
