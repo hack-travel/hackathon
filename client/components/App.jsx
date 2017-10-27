@@ -74,7 +74,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        {!this.state.isLoggedIn ?
+        {this.state.isLoggedIn ?
           <div>
           <Navbar handleSignOut={this.handleSignOut}/>
           <Switch>
