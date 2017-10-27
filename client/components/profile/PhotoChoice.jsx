@@ -39,10 +39,13 @@ class PhotoChoice extends React.Component {
     this.getPhotos();
   }
 
-  choosePhoto() {
-    console.log('hi')
-    //in the .then make sure to call getPhotos() again so we'll get new choice
-
+  choosePhoto(relevantTags) {
+    // Hardcoded userId for the time being, eventually should pick up user info in backend
+    axios.post('/api/profile/insertIntoUsersAndTags', { tags: relevantTags, userId: 12 }) 
+    .then((res) => {
+      this.getPhotos();
+    })
+    .catch((err) => console.error('Oh my god!', err))
   }
 
   render() {
@@ -56,14 +59,14 @@ class PhotoChoice extends React.Component {
                 src={this.state.firstPicture.pictureUrl}
                 style={{width: 300, height: 'auto'}}
               />
-              <button onClick={this.choosePhoto}>I like this one more.</button>
+              <button onClick={() => this.choosePhoto(this.state.firstPicture.tags)}>I like this one more.</button>
             </div>
             <div>
               <img 
                 src={this.state.secondPicture.pictureUrl}
                 style={{width: 300, height: 'auto'}}
               />
-              <button onClick={this.choosePhoto}>I like this one more.</button>
+              <button onClick={() => this.choosePhoto(this.state.secondPicture.tags)}>I like this one more.</button>
             </div>
           </div>
         ): null}
