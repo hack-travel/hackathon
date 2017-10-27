@@ -37,7 +37,7 @@ class ViewItineraries extends React.Component {
 
     return (
       <div>
-        <h3> FDEWFWEFW </h3>
+        <h3> View Your Itineraries </h3>
         <div className="itinerary-preview-list">
           {
             itineraries && itineraries.length ?
