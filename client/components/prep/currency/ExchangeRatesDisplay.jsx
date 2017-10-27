@@ -8,19 +8,23 @@ class ExchangeRatesDisplay extends Component {
   }
 
   render() {
-    let { origin, destinations, quotes } = this.props;
+    let { origin, destinations, quotes, monthAgoQuotes } = this.props;
     if (Object.keys(quotes).length) {
       return (
         <div id='ExchangeRatesDisplay' style={{ display: 'grid' }}>
+          <ul>
           {destinations.map(destination => (
             <RatePanel 
               key={destination.country}
               baseCurrency={origin.currency.code}
+              destinationName={destination.country}
               targetCurrency={destination.currency.code}
               budget={destination.budget}
               quotes={quotes}
+              monthAgoQuotes={monthAgoQuotes}
             />
           ))}
+          </ul>
         </div>
       );
     } else {

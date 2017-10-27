@@ -29,7 +29,7 @@ const dummyData = {
           code: 'GBP',
           name: 'British Pound Sterling'
         },
-        budget: 100
+        budget: 85
       },
       {
         country: 'Germany',
@@ -37,7 +37,15 @@ const dummyData = {
           code: 'EUR',
           name: 'Euro'
         },
-        budget: 100
+        budget: 109
+      },
+      {
+        country: 'Australia',
+        currency: {
+          code: 'AUD',
+          name: 'Australian Dollar'
+        },
+        budget: 509
       }
     ]
   }
@@ -55,15 +63,19 @@ class CurrencyHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartedCurrency: 'GBP',
-      quotes: {}
+      quotes: {},
+      monthAgoQuotes: {}
     }
   }
 
   componentWillMount() {
     return (async () => {
-      let quotes = await fetch('https://api.fixer.io/latest?base=usd');
-      this.setState({ quotes });
+      let date = new Date();
+      let data = await fetch(`https://api.fixer.io/latest?base=usd`);
+      let monthAgoData = await fetch(`http://api.fixer.io/${date.getFullYear()}-${date.getMonth() > 10 ? '' : '0'}${date.getMonth() - 1}-${date.getDate()}?base=usd`);
+      let quotes = await data.json();
+      let monthAgoQuotes = await monthAgoData.json();
+      this.setState({ quotes, monthAgoQuotes });
     })();
   }
 
@@ -71,22 +83,26 @@ class CurrencyHome extends Component {
     return (
       <div className='currencyHome'>
         <h1>Currency Home</h1>
-        <div>
+        <div style={{ margin: '10%' }}>
           <span>
+            <h3>
             You are coming from {dummyData.trip.origin.country.name} {' '}
             ({dummyData.trip.origin.country.code}) 
             where your local currency is the {' '}
             {dummyData.trip.origin.currency.name} {' '}
             ({dummyData.trip.origin.currency.code})
+            </h3>
           </span>
           <ExchangeRatesDisplay 
             origin={dummyData.trip.origin}
             destinations={dummyData.trip.destinations}
             quotes={this.state.quotes}
+            monthAgoQuotes={this.state.monthAgoQuotes}
           />
           <CurrencyChart 
-            baseCurrency={dummyData.trip.origin.currency.code}
-            targetCurrency={this.state.chartedCurrency}
+            quotes={this.state.quotes}
+            monthAgoQuotes={this.state.monthAgoQuotes}
+            currencies={dummyData.trip.destinations.map(dest => dest.currency.code)}
           />
         </div>
       </div>
