@@ -1,6 +1,9 @@
-export const CHANGE_EXAMPLE = 'CHANGE_EXAMPLE';
+import changeExample from './example';
+import changeItineraries from './itineraries';
+import changeEvents from './events';
 
-export const changeExample = (text) => ({
-	type: CHANGE_EXAMPLE,
-	text
-});
+export {
+  changeExample,
+	changeItineraries,
+  changeEvents
+}
