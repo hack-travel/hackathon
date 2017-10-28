@@ -47,7 +47,8 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.2",
-    "sequelize": "^4.3.18"
+    "sequelize": "^4.3.18",
+    "slick-carousel": "^1.8.1"
   },
   "engine": {
     "node": "*",
