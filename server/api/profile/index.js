@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../../db');
-const handleGetTwoEvents = require('./controllers/getTwoEventsHandler')
+const handleGetTwoEvents = require('./controllers/getTwoEventsHandler');
+const usersAndTagsHandler = require('./controllers/usersAndTagsHandler.js');
 
 //routes for profile go here
 router.get('/getTwoEvents', handleGetTwoEvents);
+
+router.post('/insertIntoUsersAndTags', usersAndTagsHandler.insertIntoUsersAndTags);
 
 router.post('/login', async (req, res) => {
   try {
