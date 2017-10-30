@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../actions';
 
-
+import PhotoChoice from './PhotoChoice.jsx'
 
 
 class ProfileIndex extends React.Component {
@@ -22,7 +22,8 @@ class ProfileIndex extends React.Component {
   render() {
     return (
       <div>
-        <h3> ProfileIndex </h3> 
+        <h3> ProfileIndex </h3>
+        <PhotoChoice /> 
       </div>
     );
   }
