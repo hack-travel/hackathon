@@ -4,6 +4,7 @@ import PackingHome from './packing/PackingHome.jsx';
 import BudgetHome from './budget/BudgetHome.jsx';
 import EssentialsHome from './essentials/EssentialsHome.jsx';
 import TranslationHome from './translation/TranslationHome.jsx';
+import CurrencyHome from './currency/CurrencyHome.jsx';
 
 // React-Redux connect() boilerplate
 // NOTE: you may have to modify the filepath for ActionCreators
@@ -27,6 +28,7 @@ class PrepIndex extends React.Component {
           <Route path='/prep/budget' component={BudgetHome} />
           <Route path='/prep/essentials' component={EssentialsHome} />
           <Route path='/prep/translation' component={TranslationHome} />
+          <Route path='/prep/currency' component={CurrencyHome} />
         </Switch>
       </div>
     );
