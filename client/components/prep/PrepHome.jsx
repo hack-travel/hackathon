@@ -27,6 +27,9 @@ class PrepHome extends React.Component {
         <Link to='/prep/translation'>
           <div>Translation Home</div>
         </Link>
+        <Link to='/prep/currency'>
+          <div>Currency Home</div>
+        </Link>
       </div>
     );
   }
